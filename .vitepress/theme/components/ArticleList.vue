@@ -268,31 +268,59 @@ const stats = computed(() => ({
 .article-meta {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .article-date {
   font-size: 0.875rem;
   color: var(--vp-c-text-3);
   font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.article-date:hover {
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-divider-light);
 }
 
 .article-category {
   font-size: 0.75rem;
+  color: var(--vp-c-text-2);
+  background: transparent;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid var(--vp-c-divider-light);
+  border-radius: 12px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.article-category:hover {
   color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
   background: var(--vp-c-brand-soft);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-weight: 500;
 }
 
 .read-time {
   font-size: 0.75rem;
   color: var(--vp-c-text-3);
+  padding: 0.125rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
 
 .read-time::before {
   content: '⏱ ';
+}
+
+.read-time:hover {
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-divider-light);
 }
 
 .article-title {
