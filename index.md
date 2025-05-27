@@ -41,87 +41,51 @@ features:
     icon: 🎨
 ---
 
-<div class="home-content">
-  <section class="recent-posts">
+<div class="modern-home">
+  <section class="hero-section">
     <h2>最新文章</h2>
-    <div class="posts-grid">
-      <article class="post-card">
-        <div class="post-meta">
-          <span class="post-date">2024-01-15</span>
-          <span class="post-category">技术</span>
+    <div class="articles-grid">
+      <article class="article-card">
+        <div class="article-meta">
+          <span class="date">2024-01-15</span>
+          <span class="category">技术</span>
         </div>
         <h3>现代前端开发的思考</h3>
         <p>探讨现代前端开发中的最佳实践和未来趋势...</p>
-        <a href="/posts/modern-frontend" class="read-more">阅读更多 →</a>
+        <a href="#" class="read-more">阅读更多 →</a>
       </article>
       
-      <article class="post-card">
-        <div class="post-meta">
-          <span class="post-date">2024-01-12</span>
-          <span class="post-category">生活</span>
+      <article class="article-card">
+        <div class="article-meta">
+          <span class="date">2024-01-12</span>
+          <span class="category">生活</span>
         </div>
         <h3>数字时代的深度阅读</h3>
         <p>在信息爆炸的时代，如何保持深度阅读的习惯...</p>
-        <a href="/posts/deep-reading" class="read-more">阅读更多 →</a>
+        <a href="#" class="read-more">阅读更多 →</a>
       </article>
       
-      <article class="post-card">
-        <div class="post-meta">
-          <span class="post-date">2024-01-10</span>
-          <span class="post-category">思考</span>
+      <article class="article-card">
+        <div class="article-meta">
+          <span class="date">2024-01-10</span>
+          <span class="category">思考</span>
         </div>
         <h3>知识管理的艺术</h3>
         <p>如何构建属于自己的知识体系，让学习更高效...</p>
-        <a href="/posts/knowledge-management" class="read-more">阅读更多 →</a>
+        <a href="#" class="read-more">阅读更多 →</a>
       </article>
-    </div>
-  </section>
-
-  <section class="stats-section">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-number">150+</div>
-        <div class="stat-label">文章数量</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">50K+</div>
-        <div class="stat-label">总阅读量</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">20+</div>
-        <div class="stat-label">主题分类</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">365</div>
-        <div class="stat-label">持续天数</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="newsletter">
-    <div class="newsletter-content">
-      <h2>订阅更新</h2>
-      <p>第一时间获取最新文章和思考，与我们一起成长</p>
-      <div class="newsletter-form">
-        <input type="email" placeholder="输入你的邮箱地址" />
-        <button type="submit">订阅</button>
-      </div>
     </div>
   </section>
 </div>
 
-<style>
-.home-content {
+<style scoped>
+.modern-home {
   max-width: 1200px;
   margin: 0 auto;
   padding: 4rem 2rem;
 }
 
-.recent-posts {
-  margin-bottom: 6rem;
-}
-
-.recent-posts h2 {
+.hero-section h2 {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
@@ -132,13 +96,13 @@ features:
   background-clip: text;
 }
 
-.posts-grid {
+.articles-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
 }
 
-.post-card {
+.article-card {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -149,7 +113,7 @@ features:
   overflow: hidden;
 }
 
-.post-card::before {
+.article-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -159,23 +123,23 @@ features:
   background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
 }
 
-.post-card:hover {
+.article-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
-.post-meta {
+.article-meta {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
   font-size: 0.9rem;
 }
 
-.post-date {
+.date {
   color: #666;
 }
 
-.post-category {
+.category {
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
   padding: 0.25rem 0.75rem;
@@ -183,14 +147,14 @@ features:
   font-size: 0.8rem;
 }
 
-.post-card h3 {
+.article-card h3 {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: #333;
 }
 
-.post-card p {
+.article-card p {
   color: #666;
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -207,135 +171,30 @@ features:
   color: #764ba2;
 }
 
-.stats-section {
-  margin-bottom: 6rem;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-}
-
-.stat-item {
-  text-align: center;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.stat-number {
-  font-size: 3rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.5rem;
-}
-
-.stat-label {
-  color: #666;
-  font-size: 1.1rem;
-}
-
-.newsletter {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 30px;
-  padding: 4rem 2rem;
-  text-align: center;
-  color: white;
-}
-
-.newsletter h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.newsletter p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-}
-
-.newsletter-form {
-  display: flex;
-  max-width: 400px;
-  margin: 0 auto;
-  gap: 1rem;
-}
-
-.newsletter-form input {
-  flex: 1;
-  padding: 1rem 1.5rem;
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  outline: none;
-}
-
-.newsletter-form button {
-  padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.newsletter-form button:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
 @media (max-width: 768px) {
-  .home-content {
+  .modern-home {
     padding: 2rem 1rem;
   }
   
-  .posts-grid {
+  .articles-grid {
     grid-template-columns: 1fr;
   }
   
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .newsletter-form {
-    flex-direction: column;
-  }
-  
-  .recent-posts h2,
-  .newsletter h2 {
+  .hero-section h2 {
     font-size: 2rem;
   }
 }
 
-.dark .post-card {
+.dark .article-card {
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.dark .post-card h3 {
+.dark .article-card h3 {
   color: #fff;
 }
 
-.dark .post-card p {
+.dark .article-card p {
   color: #ccc;
 }
-
-.dark .stat-item {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dark .stat-label {
-  color: #ccc;
-}
-</style>
+</style> 
