@@ -90,222 +90,299 @@ html, body {
   font-display: block;
 }
 
-/* 首页背景样式 */
-.VPHomeHero {
-  background-image: url('/hero-bg-modern.svg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* 简洁的Hero区域 */
+.VPHero {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+  overflow: hidden;
 }
 
-.VPHomeHero::before {
+.VPHero::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.8);
   z-index: 1;
 }
 
-/* 暗色模式下的背景遮罩 */
-.dark .VPHomeHero::before {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.VPHomeHero > .container {
+.VPHero .container {
   position: relative;
   z-index: 2;
-  width: 100%;
 }
 
-/* 首页标题样式 */
-.VPHomeHero > .container > .main > h1 {
-  font-size: 4.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
-  margin-bottom: 1rem;
+/* Hero文字效果 - 简洁风格 */
+.VPHero .name {
+  font-weight: 300;
+  color: #1e293b;
+  letter-spacing: 0.05em;
 }
 
-/* 首页子标题样式 */
-.VPHomeHero > .container > .main > .text {
-  padding-top: 20px;
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.VPHero .text {
+  color: #475569;
+  font-weight: 400;
+  font-size: 1.5rem;
 }
 
-/* 首页介绍样式 */
-.VPHomeHero > .container > .main > .tagline {
-  padding-top: 24px;
-  font-size: 1.3rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* 按钮样式优化 */
-.VPHomeHero .actions {
-  margin-top: 3rem;
-}
-
-.VPHomeHero .actions .VPButton {
-  border-radius: 50px;
-  padding: 1rem 2.5rem;
-  font-weight: 600;
+.VPHero .tagline {
+  color: #64748b;
   font-size: 1.1rem;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+  font-weight: 400;
 }
 
-.VPHomeHero .actions .VPButton.brand {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+/* 简洁按钮样式 */
+.VPButton.brand {
+  background: #1e293b;
   border: none;
   color: white;
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  font-weight: 500;
 }
 
-.VPHomeHero .actions .VPButton.brand:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+.VPButton.brand:hover {
+  background: #334155;
+  transform: translateY(-1px);
 }
 
-.VPHomeHero .actions .VPButton.alt {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
+.VPButton.alt {
+  background: transparent;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  font-weight: 500;
 }
 
-.VPHomeHero .actions .VPButton.alt:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-2px);
+.VPButton.alt:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
 }
 
-/* 自适应样式 */
-@media (max-width: 1024px) {
-  /* 首页标题样式 */
-  .VPHomeHero > .container > .main > h1 {
-    font-size: 3.5rem;
-  }
-
-  /* 首页子标题样式 */
-  .VPHomeHero > .container > .main > .text {
-    padding-top: 15px;
-    font-size: 2rem;
-  }
-
-  /* 首页介绍样式 */
-  .VPHomeHero > .container > .main > .tagline {
-    padding-top: 20px;
-    font-size: 1.1rem;
-  }
-}
-
-/* 自适应样式 */
-@media (max-width: 640px) {
-  .VPHomeHero {
-    min-height: 80vh;
-  }
-
-  /* 首页标题样式 */
-  .VPHomeHero > .container > .main > h1 {
-    font-size: 2.5rem;
-  }
-
-  /* 首页子标题样式 */
-  .VPHomeHero > .container > .main > .text {
-    padding-top: 15px;
-    font-size: 1.5rem;
-  }
-
-  /* 首页介绍样式 */
-  .VPHomeHero > .container > .main > .tagline {
-    padding-top: 20px;
-    font-size: 1rem;
-  }
-
-  .VPHomeHero .actions {
-    margin-top: 2rem;
-  }
-
-  .VPHomeHero .actions .VPButton {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-  }
-}
-
-/* 主页下方的页脚透明度 */
-.VPFooter {
-  opacity: 0.8;
-}
-
-/* 特性卡片样式优化 */
+/* 简洁特性卡片 */
 .VPFeatures {
   background: transparent;
+  padding: 4rem 0;
 }
 
 .VPFeature {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 2rem;
   transition: all 0.3s ease;
-  overflow: hidden;
-  position: relative;
-}
-
-.VPFeature::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .VPFeature:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #cbd5e1;
+}
+
+.VPFeature .icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.VPFeature .title {
+  color: #1e293b;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.VPFeature .details {
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* 页面整体背景 - 简洁 */
+.Layout {
+  background: #ffffff;
+}
+
+/* 导航栏样式 - 简洁 */
+.VPNav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* 页脚样式 - 简洁 */
+.VPFooter {
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* 简洁滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* 暗色模式适配 */
+.dark .VPHero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.dark .VPHero::before {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.dark .VPHero .name {
+  color: #f8fafc;
+}
+
+.dark .VPHero .text {
+  color: #cbd5e1;
+}
+
+.dark .VPHero .tagline {
+  color: #94a3b8;
+}
+
+.dark .VPButton.brand {
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+.dark .VPButton.brand:hover {
+  background: #e2e8f0;
+}
+
+.dark .VPButton.alt {
+  background: transparent;
+  color: #f8fafc;
+  border-color: #475569;
+}
+
+.dark .VPButton.alt:hover {
+  background: rgba(248, 250, 252, 0.1);
+  border-color: #64748b;
 }
 
 .dark .VPFeature {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1e293b;
+  border-color: #334155;
 }
 
-/* 页面滚动动画 */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+.dark .VPFeature:hover {
+  border-color: #475569;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark .VPFeature .title {
+  color: #f8fafc;
+}
+
+.dark .VPFeature .details {
+  color: #cbd5e1;
+}
+
+.dark .Layout {
+  background: #0f172a;
+}
+
+.dark .VPNav {
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom-color: #334155;
+}
+
+.dark .VPFooter {
+  background: #1e293b;
+  border-top-color: #334155;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .VPHero .tagline {
+    font-size: 1rem;
+    padding: 0 1rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .VPFeature {
+    margin-bottom: 1rem;
+  }
+  
+  .VPFeature .icon {
+    font-size: 1.75rem;
   }
 }
 
-.VPHomeHero .main {
-  animation: fadeInUp 1s ease-out;
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
 }
 
-.VPFeatures .container {
-  animation: fadeInUp 1s ease-out 0.3s both;
+/* 选择文本样式 */
+::selection {
+  background: #e2e8f0;
+  color: #1e293b;
 }
+
+.dark ::selection {
+  background: #475569;
+  color: #f8fafc;
+}
+
+/* 链接样式 */
+a {
+  transition: all 0.3s ease;
+}
+
+/* 加载动画 */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.VPFeature {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.VPFeature:nth-child(1) { animation-delay: 0.1s; }
+.VPFeature:nth-child(2) { animation-delay: 0.2s; }
+.VPFeature:nth-child(3) { animation-delay: 0.3s; }
+.VPFeature:nth-child(4) { animation-delay: 0.4s; }
 
 /* 正文结尾的 CC 协议链接基本样式 */
 .footer-cc-link {
@@ -357,381 +434,7 @@ html, body {
   text-decoration: underline;
 }
 
-/**
-  Discord 链接按钮样式
-*/
-
-.VPHero.VPHomeHero .actions a[href="https://discord.gg/XuNFDcDZGj"] {
-  color: white;
-  background-color: #404eed;
-}
-
-.VPHero.VPHomeHero .actions a[href="https://discord.gg/XuNFDcDZGj"]:hover {
-  color: white;
-  background-color: #6975f2;
-}
-
-.VPHero.VPHomeHero .actions a[href="https://discord.gg/XuNFDcDZGj"]:active {
-  color: white;
-  background-color: #404eed;
-}
-
-/**
-  暗色模式下 Discord 链接按钮样式
-*/
-
-.dark .VPHero.VPHomeHero .actions a[href="https://discord.gg/XuNFDcDZGj"] {
-  color: white;
-  background-color: #444c9e;
-}
-
-.dark .VPHero.VPHomeHero .actions a[href="https://discord.gg/XuNFDcDZGj"]:hover {
-  color: white;
-  background-color: #404eed;
-}
-
-.dark .VPHero.VPHomeHero .actions a[href="https://discord.gg/XuNFDcDZGj"]:active {
-  color: white;
-  background-color: #444c9e;
-}
-
-/**
-  GitHub 链接按钮样式
-*/
-
-.VPHero.VPHomeHero .actions a[href="https://github.com/nolebase/integrations"] {
-  color: white;
-  background-color: #000;
-}
-
-.VPHero.VPHomeHero .actions a[href="https://github.com/nolebase/integrations"]:hover {
-  color: white;
-  background-color: #4b4b4b;
-}
-
-.VPHero.VPHomeHero .actions a[href="https://github.com/nolebase/integrations"]:active {
-  color: white;
-  background-color: #000;
-}
-
-/**
-  暗色模式下 GitHub 链接按钮样式
-*/
-
-.dark .VPHero.VPHomeHero .actions a[href="https://github.com/nolebase/integrations"] {
-  color: white;
-  background-color: #4b4b4b;
-}
-
-.dark .VPHero.VPHomeHero .actions a[href="https://github.com/nolebase/integrations"]:hover {
-  color: white;
-  background-color: #252525;
-}
-
-.dark .VPHero.VPHomeHero .actions a[href="https://github.com/nolebase/integrations"]:active {
-  color: white;
-  background-color: #4b4b4b;
-}
-
-/* 平原主题背景 */
-.VPHero {
-  background-image: url('/prairie-hero.svg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  overflow: hidden;
-}
-
-.VPHero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(135, 206, 235, 0.1) 0%,
-    rgba(152, 251, 152, 0.1) 50%,
-    rgba(240, 248, 255, 0.1) 100%
-  );
-  z-index: 1;
-}
-
-.VPHero .container {
-  position: relative;
-  z-index: 2;
-}
-
-/* Hero文字效果 */
-.VPHero .name {
-  background: linear-gradient(135deg, #2c3e50 0%, #3498db 50%, #27ae60 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-weight: 800;
-}
-
-.VPHero .text {
-  color: #2c3e50;
-  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
-  font-weight: 600;
-}
-
-.VPHero .tagline {
-  color: #5a6c7d;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
-  font-size: 1.2rem;
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* 按钮样式 */
-.VPButton.brand {
-  background: linear-gradient(135deg, #3498db 0%, #27ae60 100%);
-  border: none;
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-  transition: all 0.3s ease;
-}
-
-.VPButton.brand:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
-}
-
-.VPButton.alt {
-  background: rgba(255, 255, 255, 0.9);
-  color: #2c3e50;
-  border: 2px solid rgba(52, 152, 219, 0.3);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.VPButton.alt:hover {
-  background: rgba(255, 255, 255, 1);
-  border-color: #3498db;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* 特性卡片 */
-.VPFeatures {
-  background: linear-gradient(
-    135deg,
-    rgba(240, 248, 255, 0.5) 0%,
-    rgba(245, 255, 250, 0.5) 100%
-  );
-  padding: 4rem 0;
-  margin-top: 2rem;
-}
-
-.VPFeature {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(135, 206, 235, 0.2);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
-
-.VPFeature:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.95);
-}
-
-.VPFeature .icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.VPFeature .title {
-  color: #2c3e50;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.VPFeature .details {
-  color: #5a6c7d;
-  line-height: 1.6;
-}
-
-/* 页面整体背景 */
-.Layout {
-  background: linear-gradient(
-    180deg,
-    rgba(240, 248, 255, 0.3) 0%,
-    rgba(245, 255, 250, 0.3) 50%,
-    rgba(255, 255, 255, 0.3) 100%
-  );
-  min-height: 100vh;
-}
-
-/* 导航栏样式 */
-.VPNav {
-  backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid rgba(135, 206, 235, 0.2);
-}
-
-/* 页脚样式 */
+/* 主页下方的页脚透明度 */
 .VPFooter {
-  background: linear-gradient(135deg, rgba(135, 206, 235, 0.1) 0%, rgba(152, 251, 152, 0.1) 100%);
-  border-top: 1px solid rgba(135, 206, 235, 0.2);
-  backdrop-filter: blur(10px);
+  opacity: 0.9;
 }
-
-/* 滚动条样式 */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(240, 248, 255, 0.5);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #87CEEB, #98FB98);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #5F9EA0, #90EE90);
-}
-
-/* 动画效果 */
-@keyframes prairie-breeze {
-  0%, 100% { transform: translateX(0) rotate(0deg); }
-  25% { transform: translateX(5px) rotate(1deg); }
-  75% { transform: translateX(-5px) rotate(-1deg); }
-}
-
-.VPFeature:nth-child(odd) {
-  animation: prairie-breeze 6s ease-in-out infinite;
-}
-
-.VPFeature:nth-child(even) {
-  animation: prairie-breeze 8s ease-in-out infinite reverse;
-}
-
-/* 暗色模式适配 */
-.dark .VPHero::before {
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.4) 0%,
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.2) 100%
-  );
-}
-
-.dark .VPHero .name {
-  background: linear-gradient(135deg, #ffffff 0%, #87CEEB 50%, #98FB98 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.dark .VPHero .text {
-  color: #ffffff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.dark .VPHero .tagline {
-  color: #cccccc;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.dark .VPFeature {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dark .VPFeature:hover {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.dark .VPFeature .title {
-  color: #ffffff;
-}
-
-.dark .VPFeature .details {
-  color: #cccccc;
-}
-
-.dark .Layout {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(20, 20, 20, 0.8) 50%,
-    rgba(40, 40, 40, 0.8) 100%
-  );
-}
-
-.dark .VPNav {
-  background: rgba(0, 0, 0, 0.8);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dark .VPFooter {
-  background: rgba(0, 0, 0, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .VPHero .tagline {
-    font-size: 1rem;
-    padding: 0 1rem;
-  }
-  
-  .VPFeature {
-    margin-bottom: 1rem;
-  }
-  
-  .VPFeature .icon {
-    font-size: 2rem;
-  }
-}
-
-/* 平滑滚动 */
-html {
-  scroll-behavior: smooth;
-}
-
-/* 选择文本样式 */
-::selection {
-  background: linear-gradient(135deg, #87CEEB, #98FB98);
-  color: white;
-}
-
-/* 链接悬停效果 */
-a {
-  transition: all 0.3s ease;
-}
-
-a:hover {
-  text-decoration: none;
-  color: #3498db;
-}
-
-/* 加载动画 */
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.VPFeature {
-  animation: fade-in 0.6s ease-out;
-}
-
-.VPFeature:nth-child(1) { animation-delay: 0.1s; }
-.VPFeature:nth-child(2) { animation-delay: 0.2s; }
-.VPFeature:nth-child(3) { animation-delay: 0.3s; }
-.VPFeature:nth-child(4) { animation-delay: 0.4s; }
-.VPFeature:nth-child(5) { animation-delay: 0.5s; }
-.VPFeature:nth-child(6) { animation-delay: 0.6s; }
