@@ -1,0 +1,78 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 渐变定义 -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8e8e8;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#d0d0d0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b8b8b8;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="grassGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8a8a8;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#909090;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#787878;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="distantGrassGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#c0c0c0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a0a0a0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 天空背景 -->
+  <rect width="1200" height="350" fill="url(#skyGradient)"/>
+  
+  <!-- 远山轮廓 -->
+  <path d="M0,280 Q200,260 400,270 T800,265 Q1000,260 1200,275 L1200,350 L0,350 Z" fill="#b0b0b0" opacity="0.6"/>
+  
+  <!-- 中景草原 -->
+  <path d="M0,320 Q300,310 600,315 T1200,320 L1200,450 L0,450 Z" fill="url(#distantGrassGradient)"/>
+  
+  <!-- 前景草原 -->
+  <path d="M0,400 Q200,390 400,395 Q600,400 800,395 Q1000,390 1200,400 L1200,600 L0,600 Z" fill="url(#grassGradient)"/>
+  
+  <!-- 草丛细节 -->
+  <g opacity="0.4">
+    <!-- 左侧草丛 -->
+    <path d="M50,450 Q55,440 60,450 Q65,435 70,450" stroke="#707070" stroke-width="2" fill="none"/>
+    <path d="M80,460 Q85,445 90,460 Q95,440 100,460" stroke="#707070" stroke-width="2" fill="none"/>
+    <path d="M120,455 Q125,440 130,455 Q135,435 140,455" stroke="#707070" stroke-width="2" fill="none"/>
+    
+    <!-- 中间草丛 -->
+    <path d="M300,470 Q305,455 310,470 Q315,450 320,470" stroke="#808080" stroke-width="1.5" fill="none"/>
+    <path d="M350,465 Q355,450 360,465 Q365,445 370,465" stroke="#808080" stroke-width="1.5" fill="none"/>
+    
+    <!-- 右侧草丛 -->
+    <path d="M900,480 Q905,465 910,480 Q915,460 920,480" stroke="#707070" stroke-width="2" fill="none"/>
+    <path d="M950,475 Q955,460 960,475 Q965,455 970,475" stroke="#707070" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- 远处的人影 -->
+  <g transform="translate(750, 340)">
+    <!-- 人的轮廓，很小很远 -->
+    <ellipse cx="0" cy="8" rx="1.5" ry="2" fill="#606060" opacity="0.7"/> <!-- 头部 -->
+    <rect x="-1" y="6" width="2" height="6" fill="#606060" opacity="0.7"/> <!-- 身体 -->
+    <rect x="-1.5" y="8" width="3" height="1" fill="#606060" opacity="0.7"/> <!-- 手臂 -->
+    <rect x="-0.5" y="12" width="1" height="4" fill="#606060" opacity="0.7"/> <!-- 腿部 -->
+  </g>
+  
+  <!-- 云朵 -->
+  <g opacity="0.3">
+    <ellipse cx="200" cy="100" rx="40" ry="15" fill="#ffffff"/>
+    <ellipse cx="220" cy="95" rx="30" ry="12" fill="#ffffff"/>
+    <ellipse cx="180" cy="95" rx="25" ry="10" fill="#ffffff"/>
+    
+    <ellipse cx="600" cy="80" rx="35" ry="12" fill="#ffffff"/>
+    <ellipse cx="620" cy="75" rx="25" ry="10" fill="#ffffff"/>
+    
+    <ellipse cx="950" cy="120" rx="45" ry="18" fill="#ffffff"/>
+    <ellipse cx="970" cy="115" rx="30" ry="15" fill="#ffffff"/>
+  </g>
+  
+  <!-- 微风效果线条 -->
+  <g opacity="0.2">
+    <path d="M100,200 Q150,195 200,200" stroke="#ffffff" stroke-width="1" fill="none"/>
+    <path d="M400,180 Q450,175 500,180" stroke="#ffffff" stroke-width="1" fill="none"/>
+    <path d="M700,220 Q750,215 800,220" stroke="#ffffff" stroke-width="1" fill="none"/>
+  </g>
+</svg> 

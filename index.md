@@ -2,16 +2,13 @@
 layout: home
 sidebar: false
 
-title: Nólëbase
+title: 遥原
 titleTemplate: 记录回忆，知识和畅想的地方
 
 hero:
-  name: g~Nj$3J2^
+  name: 遥原
   text: 记录回忆，知识和畅想的地方
-  tagline: 以 Nólëbase 为名，读作 nole-base，取自意为「知识」的昆雅语 nólë 和意为「基础」的英文 base，即「知识库」
-  image:
-    src: /logo.svg
-    alt: Vitest
+  tagline: 遥远的原野，记录着生活的点点滴滴，知识的积累与思想的碰撞
   actions:
     - theme: brand
       text: 开始阅读
