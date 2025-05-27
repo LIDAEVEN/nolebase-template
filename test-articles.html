@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章功能测试 - 遥原</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #ffffff;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1e293b;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .section h2 {
+            margin-bottom: 1.5rem;
+            color: #334155;
+        }
+
+        /* 最新文章样式 */
+        .recent-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .post-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .post-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .post-date {
+            font-size: 0.875rem;
+            color: #64748b;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+        }
+
+        .post-category {
+            font-size: 0.75rem;
+            color: #3b82f6;
+            background: #dbeafe;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .post-read-time {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        .post-read-time::before {
+            content: '⏱ ';
+        }
+
+        .post-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-title a {
+            color: #1e293b;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .post-title a:hover {
+            color: #3b82f6;
+        }
+
+        .post-description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .post-tag {
+            font-size: 0.75rem;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .post-tag:hover {
+            background: #dbeafe;
+            color: #3b82f6;
+            border-color: #3b82f6;
+        }
+
+        /* 统计信息样式 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        /* 功能特性 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+        }
+
+        .feature-description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .feature-list li {
+            padding: 0.25rem 0;
+            color: #64748b;
+        }
+
+        .feature-list li::before {
+            content: '✓ ';
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .post-item:hover {
+                transform: none;
+            }
+            
+            .post-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 文章功能测试 - 遥原</h1>
+
+        <!-- 最新文章展示 -->
+        <div class="section">
+            <h2>🔥 最新文章</h2>
+            <div class="recent-posts">
+                <article class="post-item">
+                    <div class="post-meta">
+                        <span class="post-date">2024.01.15</span>
+                        <span class="post-category">思考</span>
+                        <span class="post-read-time">5 分钟阅读</span>
+                    </div>
+                    <h3 class="post-title">
+                        <a href="/笔记/演示目录1/文档-带评论">在数字时代寻找内心的平静</a>
+                    </h3>
+                    <p class="post-description">探讨如何在信息爆炸的时代保持内心的宁静与专注，分享一些实用的方法和思考。</p>
+                    <div class="post-tags">
+                        <span class="post-tag">生活</span>
+                        <span class="post-tag">哲学</span>
+                        <span class="post-tag">专注</span>
+                    </div>
+                </article>
+
+                <article class="post-item">
+                    <div class="post-meta">
+                        <span class="post-date">2024.01.12</span>
+                        <span class="post-category">技术</span>
+                        <span class="post-read-time">8 分钟阅读</span>
+                    </div>
+                    <h3 class="post-title">
+                        <a href="/笔记/✍️ 文档工程/API 文档系统">现代前端开发的哲学思考</a>
+                    </h3>
+                    <p class="post-description">从哲学角度重新审视前端开发的本质与意义，探索技术与人文的结合。</p>
+                    <div class="post-tags">
+                        <span class="post-tag">前端</span>
+                        <span class="post-tag">哲学</span>
+                        <span class="post-tag">开发</span>
+                    </div>
+                </article>
+
+                <article class="post-item">
+                    <div class="post-meta">
+                        <span class="post-date">2024.01.10</span>
+                        <span class="post-category">生活</span>
+                        <span class="post-read-time">6 分钟阅读</span>
+                    </div>
+                    <h3 class="post-title">
+                        <a href="/笔记/✍️ 文档工程/图表即代码（CaC）图表绘制">慢生活的艺术</a>
+                    </h3>
+                    <p class="post-description">在快节奏的现代生活中学会慢下来的智慧，享受当下的美好时光。</p>
+                    <div class="post-tags">
+                        <span class="post-tag">生活方式</span>
+                        <span class="post-tag">慢生活</span>
+                        <span class="post-tag">艺术</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- 统计信息 -->
+        <div class="section">
+            <h2>📊 数据统计</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">文章总数</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">39</span>
+                    <span class="stat-label">总阅读时间</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">文章分类</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">标签数量</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 功能特性 -->
+        <div class="section">
+            <h2>⚡ 新增功能特性</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3 class="feature-title">🎯 智能文章管理</h3>
+                    <p class="feature-description">完整的文章数据管理系统，支持元数据、分类、标签等信息。</p>
+                    <ul class="feature-list">
+                        <li>文章标题、描述、日期</li>
+                        <li>分类和标签系统</li>
+                        <li>阅读时间估算</li>
+                        <li>文章路径管理</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-title">🔍 高级筛选功能</h3>
+                    <p class="feature-description">强大的文章筛选和搜索功能，快速找到想要的内容。</p>
+                    <ul class="feature-list">
+                        <li>按分类筛选文章</li>
+                        <li>按标签筛选文章</li>
+                        <li>全文搜索功能</li>
+                        <li>组合筛选条件</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-title">📈 实时统计信息</h3>
+                    <p class="feature-description">动态计算和显示网站的各项统计数据。</p>
+                    <ul class="feature-list">
+                        <li>文章总数统计</li>
+                        <li>总阅读时间计算</li>
+                        <li>分类数量统计</li>
+                        <li>标签数量统计</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3 class="feature-title">🎨 现代化界面</h3>
+                    <p class="feature-description">简洁美观的用户界面，提供优秀的用户体验。</p>
+                    <ul class="feature-list">
+                        <li>响应式设计</li>
+                        <li>暗色模式支持</li>
+                        <li>流畅的动画效果</li>
+                        <li>直观的交互设计</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 使用说明 -->
+        <div class="section">
+            <h2>📖 使用说明</h2>
+            <div class="feature-card">
+                <h3 class="feature-title">如何使用新的文章功能</h3>
+                <div class="feature-description">
+                    <p><strong>1. 文章数据管理：</strong></p>
+                    <p>所有文章数据存储在 <code>.vitepress/theme/data/articles.ts</code> 文件中，包含标题、描述、日期、路径、分类、标签和阅读时间等信息。</p>
+                    
+                    <p><strong>2. 主页展示：</strong></p>
+                    <p>主页会自动显示最新的3篇文章，包含完整的元数据信息和标签。</p>
+                    
+                    <p><strong>3. 文章列表页：</strong></p>
+                    <p>访问 <code>/articles</code> 页面可以查看所有文章，支持搜索、分类筛选和标签筛选。</p>
+                    
+                    <p><strong>4. 统计信息：</strong></p>
+                    <p>系统会自动计算文章总数、总阅读时间、分类数量等统计信息。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import { siteName } from '../../../metadata'
+import { getLatestArticles, getArticleStats, formatDate, type Article } from '../data/articles'
+import { computed } from 'vue'
+
+// 获取最新文章
+const latestArticles = computed(() => getLatestArticles(3))
+
+// 获取统计信息
+const stats = computed(() => getArticleStats())
 </script>
 
 <template>
@@ -16,27 +24,32 @@ import { siteName } from '../../../metadata'
     <section class="recent-posts">
       <h3>最新文章</h3>
       <div class="posts-list">
-        <article class="post-item">
-          <div class="post-date">2024.01.15</div>
-          <h4><a href="/笔记/index">在数字时代寻找内心的平静</a></h4>
-          <p>探讨如何在信息爆炸的时代保持内心的宁静与专注。</p>
-        </article>
-        
-        <article class="post-item">
-          <div class="post-date">2024.01.12</div>
-          <h4><a href="/笔记/index">现代前端开发的哲学思考</a></h4>
-          <p>从哲学角度重新审视前端开发的本质与意义。</p>
-        </article>
-        
-        <article class="post-item">
-          <div class="post-date">2024.01.10</div>
-          <h4><a href="/笔记/index">慢生活的艺术</a></h4>
-          <p>在快节奏的现代生活中学会慢下来的智慧。</p>
+        <article 
+          v-for="article in latestArticles" 
+          :key="article.path"
+          class="post-item"
+        >
+          <div class="post-meta">
+            <span class="post-date">{{ formatDate(article.date) }}</span>
+            <span v-if="article.category" class="post-category">{{ article.category }}</span>
+            <span v-if="article.readTime" class="post-read-time">{{ article.readTime }} 分钟阅读</span>
+          </div>
+          <h4><a :href="article.path">{{ article.title }}</a></h4>
+          <p>{{ article.description }}</p>
+          <div v-if="article.tags && article.tags.length > 0" class="post-tags">
+            <span 
+              v-for="tag in article.tags" 
+              :key="tag"
+              class="post-tag"
+            >
+              {{ tag }}
+            </span>
+          </div>
         </article>
       </div>
       
       <div class="view-all">
-        <a href="/笔记/index" class="view-all-link">查看全部文章 →</a>
+        <a href="/articles" class="view-all-link">查看全部文章 →</a>
       </div>
     </section>
 
@@ -44,16 +57,16 @@ import { siteName } from '../../../metadata'
     <section class="stats-section">
       <div class="stats-grid">
         <div class="stat-item">
-          <span class="stat-number">128</span>
+          <span class="stat-number">{{ stats.totalArticles }}</span>
           <span class="stat-label">文章</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">25K</span>
-          <span class="stat-label">阅读</span>
+          <span class="stat-number">{{ stats.totalReadTime }}</span>
+          <span class="stat-label">分钟</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">365</span>
-          <span class="stat-label">天数</span>
+          <span class="stat-number">{{ stats.categories }}</span>
+          <span class="stat-label">分类</span>
         </div>
       </div>
     </section>
@@ -122,11 +135,39 @@ import { siteName } from '../../../metadata'
   transform: translateX(8px);
 }
 
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
 .post-date {
   font-size: 0.875rem;
   color: var(--vp-c-text-3);
-  margin-bottom: 0.5rem;
   font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+}
+
+.post-category {
+  font-size: 0.75rem;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.post-read-time {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-3);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.post-read-time::before {
+  content: '⏱';
 }
 
 .post-item h4 {
@@ -150,7 +191,29 @@ import { siteName } from '../../../metadata'
   font-size: 0.95rem;
   color: var(--vp-c-text-2);
   line-height: 1.6;
-  margin: 0;
+  margin: 0 0 0.75rem 0;
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.post-tag {
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-divider-light);
+  transition: all 0.3s ease;
+}
+
+.post-tag:hover {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
 }
 
 .view-all {
