@@ -65,9 +65,9 @@ ON t.stagename = grouped.stagename
 ```
 
 ### 3.1 子查询部分：
-- 按stagename和DATE(datetime)分组（即按项目和日期分组）
+- 按`stagename`和`DATE(datetime)`分组（即按项目和日期分组）
 - 对每个分组计算最大时间戳MAX(datetime)
-- 返回每个分组的stagename、date_part（日期部分）和max_datetime（该日最新时间）
+- 返回每个分组的`stagename`、`date_part`（日期部分）和`max_datetime`（该日最新时间）
 ```shell
 stagename | date_part  | max_datetime
 ----------+------------+-------------------
@@ -77,9 +77,9 @@ stagename | date_part  | max_datetime
 ### 3.2 主查询部分：
 - 将原表`s_hk_hkrb`与子查询结果`grouped`进行连接
 - 连接条件：
- - 项目名称相同（`t.stagename = grouped.stagename`）
- - 时间戳等于该日最大时间戳（`t.datetime = grouped.max_datetime`）
- - 返回原表的所有字段*
+  - 项目名称相同（`t.stagename = grouped.stagename`）
+  - 时间戳等于该日最大时间戳（`t.datetime = grouped.max_datetime`）
+  - 返回原表的所有字段*
 ## 4 性能
 ### 4.1 EXPLAIN ANALYZE
 运行时间：21.995s，性能分析如下：
