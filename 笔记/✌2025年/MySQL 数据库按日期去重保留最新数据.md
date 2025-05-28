@@ -75,15 +75,15 @@ stagename | date_part  | max_datetime
 小组B     | 2025-05-28 | 2025-05-28 20:30:00
 ```
 ### 3.2 主查询部分：
-- 将原表hkrb与子查询结果grouped进行连接
+- 将原表`s_hk_hkrb`与子查询结果`grouped`进行连接
 - 连接条件：
--- 项目名称相同（t.stagename = grouped.stagename）
--- 时间戳等于该日最大时间戳（t.datetime = grouped.max_datetime）
--- 返回原表的所有字段*
+ - 项目名称相同（`t.stagename = grouped.stagename`）
+ - 时间戳等于该日最大时间戳（`t.datetime = grouped.max_datetime`）
+ - 返回原表的所有字段*
 ## 4 性能
 ### 4.1 EXPLAIN ANALYZE
 运行时间：21.995s，性能分析如下：
-```
+```shell
 -> Inner hash join (grouped.max_datetime = t.`datetime`), (grouped.stagename = t.stagename)  (cost=110e+6 rows=0) (actual time=11181..19662 rows=516690 loops=1)
     -> Table scan on grouped  (cost=2.5..2.5 rows=0) (actual time=5369..5420 rows=514649 loops=1)
         -> Materialize  (cost=0..0 rows=0) (actual time=5369..5369 rows=514649 loops=1)
