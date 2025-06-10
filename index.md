@@ -39,22 +39,6 @@ onMounted(async () => {
 })
 </script>
 
-<div class="recent-posts">
-  <h2>最新文章</h2>
-  <div v-if="latest.length" class="post-list">
-    <a v-for="post in latest" :key="post.url" :href="post.url" class="post-item">
-      <div class="post-content">
-        <h3>{{ post.title }}</h3>
-        <p class="post-meta">最后编辑：{{ post.mtime.slice(0, 10) }}<span v-if="post.category"> · {{ post.category }}</span></p>
-        <p class="post-desc">{{ post.excerpt }}</p>
-        <div class="post-tags">
-          <span v-for="tag in post.tags" :key="tag" class="tag">{{ tag }}</span>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div v-else style="text-align:center;color:var(--vp-c-text-2);margin-top:2rem;">暂无最新文章</div>
-</div>
 
 <style>
 .recent-posts {
