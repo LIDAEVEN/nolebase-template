@@ -80,12 +80,12 @@ features:
   border-radius: 12px;
   padding: 1.5rem;
   transition: all 0.3s ease;
-  border: 1px solid var(--vp-c-border);
+  border: none;
 }
 
 .post-item:hover {
   transform: translateY(-2px);
-  border-color: var(--vp-c-brand);
+  border-color: transparent;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
