@@ -10,7 +10,6 @@ import { UnlazyImages } from '@nolebase/markdown-it-unlazy-img'
 
 import { discordLink, githubRepoLink, siteDescription, siteName, targetDomain } from '../metadata'
 import { creatorNames, creatorUsernames } from './creators'
-import { sidebar } from './docsMetadata.json'
 
 export default defineConfig({
   vue: {
@@ -212,7 +211,13 @@ export default defineConfig({
       { text: '笔记', link: '/笔记/' },
       { text: '最近更新', link: '/toc' },
     ],
-    sidebar,
+    sidebar: {
+      '/': [
+        { text: '首页', link: '/' },
+        { text: '笔记', link: '/笔记/' },
+        { text: '关于', link: '/about' },
+      ]
+    },
   },
   markdown: {
     theme: {
