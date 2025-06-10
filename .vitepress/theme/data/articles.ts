@@ -1,6 +1,3 @@
-// @ts-ignore
-import latest from '../../../.vitepress/latest.json'
-
 export interface Article {
   title: string
   description?: string
@@ -12,6 +9,9 @@ export interface Article {
   excerpt?: string
   readTime?: number
 }
+
+// @ts-ignore
+import latest from '../../../.vitepress/latest.json'
 
 export const articles: Article[] = latest
 
