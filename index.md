@@ -31,26 +31,6 @@ features:
 
 <HomePage />
 
-<div class="recent-posts">
-  <h2>📝 最新文章</h2>
-  <div class="post-list">
-    <a href="/笔记/文档工程/README" class="post-item">
-      <div class="post-content">
-        <h3>文档工程</h3>
-        <p class="post-meta">2024-03-21 · 文档</p>
-        <p class="post-desc">探索文档工程的最佳实践和工具，提升文档质量和效率。</p>
-      </div>
-    </a>
-    <a href="/笔记/EXCEL/README" class="post-item">
-      <div class="post-content">
-        <h3>Excel 技巧</h3>
-        <p class="post-meta">2024-03-20 · 工具</p>
-        <p class="post-desc">分享实用的 Excel 技巧和函数使用方法，提高工作效率。</p>
-      </div>
-    </a>
-  </div>
-</div>
-
 <style>
 .recent-posts {
   max-width: 960px;
