@@ -14,27 +14,27 @@ function getAllMarkdownFiles(dir) {
     if (stat && stat.isDirectory()) {
       results = results.concat(getAllMarkdownFiles(filePath));
     } else if (file.endsWith('.md')) {
-      results.push(filePath);
+      results.push({ filePath, mtime: stat.mtime });
     }
   });
   return results;
 }
 
 const files = getAllMarkdownFiles(notesDir);
-const posts = files.map(file => {
-  const content = fs.readFileSync(file, 'utf-8');
+const posts = files.map(({ filePath, mtime }) => {
+  const content = fs.readFileSync(filePath, 'utf-8');
   const { data, excerpt } = matter(content, { excerpt: true });
   return {
-    title: data.title || path.basename(file, '.md'),
-    date: data.date || '',
-    url: file.replace(notesDir, '/笔记').replace(/\\/g, '/').replace('.md', ''),
+    title: data.title || path.basename(filePath, '.md'),
+    mtime: mtime.toISOString(),
+    url: filePath.replace(notesDir, '/笔记').replace(/\\/g, '/').replace('.md', ''),
     tags: data.tags || [],
     category: data.category || '',
     excerpt: excerpt || ''
   };
-}).filter(post => post.date)
-  .sort((a, b) => new Date(b.date) - new Date(a.date))
+}).sort((a, b) => new Date(b.mtime) - new Date(a.mtime))
+  .reverse()
   .slice(0, 5);
 
 fs.writeFileSync(output, JSON.stringify(posts, null, 2));
-console.log('最新文章已生成'); 
+console.log('最新文章已生成（按最后编辑时间）'); 
