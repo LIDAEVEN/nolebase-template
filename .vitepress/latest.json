@@ -1,1 +1,56 @@
-[]
+[
+  {
+    "title": "match函数使用指南",
+    "date": "2025-06-09",
+    "url": "/笔记/🏢EXCEL/match函数使用指南",
+    "tags": [
+      "EXCEL",
+      "办公",
+      "知识卡片"
+    ],
+    "category": "",
+    "excerpt": "\r\n# Excel MATCH函数完全指南：从基础用法到函数组合实战\r\n\r\n设置\r\n```\r\n"
+  },
+  {
+    "title": "match函数的使用方法",
+    "date": "2025-05-30",
+    "url": "/笔记/🏢EXCEL/match函数的使用方法",
+    "tags": [
+      "EXCEL",
+      "办公",
+      "知识卡片"
+    ],
+    "category": "",
+    "excerpt": "\r\n# MATCH函数的使用方法\r\n\r\n设置\r\n```\r\n"
+  },
+  {
+    "title": "MySQL 数据库按日期去重保留最新数据",
+    "date": "2025-05-28",
+    "url": "/笔记/🏢EXCEL/MySQL 数据库按日期去重保留最新数据",
+    "tags": [
+      "sql",
+      "数据库",
+      "工作"
+    ],
+    "category": "",
+    "excerpt": "\r\n# MySQL 数据库按日期去重保留最新数据\r\n\r\n设置\r\n```\r\n"
+  },
+  {
+    "title": "文档-不带评论",
+    "date": "2025-05-26",
+    "url": "/笔记/🏢EXCEL/文档-不带评论",
+    "tags": [
+      "标签内容"
+    ],
+    "category": "",
+    "excerpt": "\r\n# 文档-不带评论\r\n\r\n设置\r\n```\r\n"
+  },
+  {
+    "title": "文档-带评论 copy",
+    "date": "2025-05-26",
+    "url": "/笔记/🏢EXCEL/文档-带评论 copy",
+    "tags": [],
+    "category": "",
+    "excerpt": "\r\n# 文档-带评论\r\n\r\n设置\r\n```\r\n"
+  }
+]
