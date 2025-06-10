@@ -31,7 +31,6 @@ features:
 
 <HomePage />
 
-
 <style>
 .recent-posts {
   max-width: 960px;
