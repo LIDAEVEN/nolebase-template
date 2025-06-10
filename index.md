@@ -31,14 +31,6 @@ features:
 
 <HomePage />
 
-<script setup>
-import { ref, onMounted } from 'vue'
-const latest = ref([])
-onMounted(async () => {
-  latest.value = await fetch('/latest.json').then(res => res.json())
-})
-</script>
-
 
 <style>
 .recent-posts {
