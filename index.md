@@ -8,7 +8,7 @@ titleTemplate: 简约而不简单的知识分享
 hero:
   name: 遥原
   text: 简约而不简单
-  tagline: 在这片宁静的数字原野中，我们用最简洁的方式分享最深刻的思考。
+  tagline: 记录、积累、分享。
   actions:
     - theme: brand
       text: 开始阅读
