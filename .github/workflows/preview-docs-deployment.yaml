@@ -26,7 +26,7 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: 下载 PR 信息
-        uses: dawidd6/action-download-artifact@v3
+        uses: dawidd6/action-download-artifact@v10
         with:
           workflow_conclusion: success
           run_id: ${{ github.event.workflow_run.id }}
@@ -40,7 +40,7 @@ jobs:
           echo "PR_NUM=$(cat pr-num/pr_num)" >> $GITHUB_ENV
 
       - name: 下载构建产物
-        uses: dawidd6/action-download-artifact@v3
+        uses: dawidd6/action-download-artifact@v10
         with:
           workflow_conclusion: success
           run_id: ${{ github.event.workflow_run.id }}
@@ -48,29 +48,16 @@ jobs:
           path: docs-build
           allow_forks: true
 
-      - name: 安装 Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
-
       - name: 安装 pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           run_install: false
-          version: 8
 
-      - name: 获取 pnpm store 目录
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: 配置 pnpm 缓存
-        uses: actions/cache@v3
+      - name: 安装 Node.js 23.x
+        uses: actions/setup-node@v4
         with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version: 23.x
+          cache: 'pnpm'
 
       - name: 安装 Netlify CLI
         run: pnpm install -g netlify-cli
@@ -87,7 +74,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       - name: 搜索评论 ID
-        uses: peter-evans/find-comment@v2
+        uses: peter-evans/find-comment@v3
         id: fc
         with:
           issue-number: ${{ env.PR_NUM }}
@@ -95,7 +82,7 @@ jobs:
           body-includes: 到 Netlify
 
       - name: 创建或更新评论
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ env.PR_NUM }}
@@ -116,7 +103,7 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     steps:
       - name: 下载 PR 信息
-        uses: dawidd6/action-download-artifact@v3
+        uses: dawidd6/action-download-artifact@v10
         with:
           workflow_conclusion: success
           run_id: ${{ github.event.workflow_run.id }}
@@ -130,7 +117,7 @@ jobs:
           echo "PR_NUM=$(cat pr-num/pr_num)" >> $GITHUB_ENV
 
       - name: 搜索评论 ID
-        uses: peter-evans/find-comment@v2
+        uses: peter-evans/find-comment@v3
         id: fc
         with:
           issue-number: ${{ env.PR_NUM }}
@@ -138,7 +125,7 @@ jobs:
           body-includes: 到 Netlify
 
       - name: 创建或更新评论
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ env.PR_NUM }}
