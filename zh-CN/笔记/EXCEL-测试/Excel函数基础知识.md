@@ -3,6 +3,23 @@ tags:
   - 办公/EXCEL
 ---
 # Excel函数基础知识
+
+## 测试内容
+
+这是一个测试页面，用来检查文件是否能正常渲染。
+
+### 基本信息
+
+Excel函数是用来简化数据处理的工具。
+
+### 常用函数
+
+1. SUM函数：计算总和
+2. AVERAGE函数：计算平均值
+3. COUNT函数：统计数量
+
+这个页面应该能正常显示。如果能看到这些内容，说明基本渲染是正常的。
+
 ### 一、Excel 函数基础概念
 #### （一）函数定义
 >Excel 函数：Excel 中预先定义、执行计算或操作的特殊公式
@@ -131,7 +148,8 @@ MAX/MIN 函数
 - 绝对引用 (`$A$1`),公式复制时引用不变
 - 混合引用 (`A$1`, `$A1`),部分引用固定
     > [!NOTE] 说明 
-    可以简单理解为加`$`的行号或列号不变，没有的会在复制或下拉时相对变化。![](https://vip.123pan.cn/1840422262/ymjew503t0m000d7w32xr9hqfwvzkst8DIYxDdFvDqizDpxPAwYvAF==.png)
+    可以简单理解为加`$`的行号或列号不变，没有的会在复制或下拉时相对变化。
+    <!-- ![](https://vip.123pan.cn/1840422262/ymjew503t0m000d7w32xr9hqfwvzkst8DIYxDdFvDqizDpxPAwYvAF==.png) -->
 #### （二）数组公式基础
 定义：可以同时对多个数据进行操作的公式
 输入方法：输入完成后按 Ctrl+Shift+Enter
@@ -143,7 +161,7 @@ MAX/MIN 函数
 定义：为单元格区域、公式等创建自定义名称
 使用方法：点击 "公式"→"定义名称"→输入名称和引用位置
 优势：简化公式、提高可读性
-> [!NOTE] ![](https://vip.123pan.cn/1840422262/ymjew503t0l000d7w32x94p64ugvufxmDIYxDdFvDqizDpxPAwYvAF==.gif)
+<!-- ![](https://vip.123pan.cn/1840422262/ymjew503t0l000d7w32x94p64ugvufxmDIYxDdFvDqizDpxPAwYvAF==.gif) -->
 ### 五、函数错误处理
 #### （一）常见错误值及原因
 `#DIV/0!`：除以零错误（除数为 0 或空白单元格）
